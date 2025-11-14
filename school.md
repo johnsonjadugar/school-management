@@ -32,7 +32,7 @@ The School Management System is a comprehensive web-based application designed t
 ### Technology Stack
 - **Backend**: PHP 8.1+ with MVC architecture
 - **Database**: MySQL 8.0+ with optimized schema
-- **Frontend**: Bootstrap 5, HTML5, CSS3, JavaScript, AJAX
+- **Frontend**: Bootstrap 5 (predefined CSS files in [`css/`](css/), JS files in [`js/`](js/)), HTML5, CSS3, JavaScript, AJAX
 - **Security**: CSRF protection, role-based access control, input validation
 
 ## 📋 Project Requirements
@@ -387,13 +387,13 @@ The system follows the Model-View-Controller (MVC) pattern for clean separation 
 ### Quick Start (Using Installation Script)
 
 1. **Download and Setup**
-   ```bash
-   # Upload all files to your web server directory
-   # Set proper permissions
-   chmod 755 .
-   chmod 755 backend/logs/
-   chmod 755 backend/public/uploads/
-   ```
+    ```bash
+    # Upload all files to your web server directory
+    # Set proper permissions
+    chmod 755 .
+    chmod 755 logs/
+    chmod 755 uploads/
+    ```
 
 2. **Run Installation**
    ```bash
@@ -465,55 +465,56 @@ school-management/
 │   ├── .htaccess          # Apache rewrite rules & security
 │   └── composer.json      # PHP dependencies management
 │
-├── 🔧 Backend Application (MVC Architecture)
-│   └── backend/
-│       ├── app/           # Application core
-│       │   ├── controllers/     # Request handlers
-│       │   │   ├── AdminController.php
-│       │   │   ├── TeacherController.php
-│       │   │   ├── StudentController.php
-│       │   │   ├── CashierController.php
-│       │   │   ├── AuthController.php
-│       │   │   └── ApiController.php
-│       │   ├── core/           # Framework foundation
-│       │   │   ├── Database.php     # Database abstraction
-│       │   │   ├── Router.php        # URL routing
-│       │   │   ├── Security.php      # Security utilities
-│       │   │   ├── Session.php       # Session management
-│       │   │   └── Validator.php     # Input validation
-│       │   ├── middleware/     # Security & routing
-│       │   ├── models/         # Data layer
-│       │   │   ├── User.php         # User management
-│       │   │   ├── Student.php       # Student operations
-│       │   │   ├── Teacher.php       # Teacher operations
-│       │   │   ├── Fee.php           # Fee management
-│       │   │   ├── Exam.php          # Examination system
-│       │   │   └── Attendance.php    # Attendance tracking
-│       │   └── views/          # Presentation layer
-│       │       ├── admin/            # Admin interface
-│       │       ├── teacher/          # Teacher portal
-│       │       ├── student/          # Student portal
-│       │       ├── cashier/          # Cashier interface
-│       │       └── public/           # Public website
-│       ├── config/          # System configuration
-│       │   ├── database.php          # Database settings
-│       │   ├── app.php              # Application config
-│       │   ├── security.php         # Security settings
-│       │   ├── email.php            # Email configuration
-│       │   └── upload.php           # File upload settings
-│       ├── helpers/         # Utility functions
-│       ├── libraries/       # Third-party integrations
-│       ├── public/          # Web-accessible files
-│       │   ├── uploads/           # User uploads
-│       │   ├── css/               # Stylesheets
-│       │   ├── js/                # JavaScript files
-│       │   ├── images/            # Static images
-│       │   ├── fonts/             # Web fonts
-│       │   └── plugins/           # Third-party plugins
-│       └── logs/            # Application logs
-│           ├── error.log          # Error logging
-│           ├── access.log         # Access logging
-│           └── audit.log          # Security audit
+├── 🔧 Application Core (MVC Architecture)
+│   ├── controllers/     # Request handlers
+│   │   ├── AdminController.php
+│   │   ├── TeacherController.php
+│   │   ├── StudentController.php
+│   │   ├── CashierController.php
+│   │   ├── AuthController.php
+│   │   └── ApiController.php
+│   ├── core/           # Framework foundation
+│   │   ├── Database.php     # Database abstraction
+│   │   ├── Router.php        # URL routing
+│   │   ├── Security.php      # Security utilities
+│   │   ├── Session.php       # Session management
+│   │   └── Validator.php     # Input validation
+│   ├── middleware/     # Security & routing
+│   ├── models/         # Data layer
+│   │   ├── User.php         # User management
+│   │   ├── Student.php       # Student operations
+│   │   ├── Teacher.php       # Teacher operations
+│   │   ├── Fee.php           # Fee management
+│   │   ├── Exam.php          # Examination system
+│   │   └── Attendance.php    # Attendance tracking
+│   ├── config/          # System configuration
+│   │   ├── database.php          # Database settings
+│   │   ├── app.php              # Application config
+│   │   ├── security.php         # Security settings
+│   │   ├── email.php            # Email configuration
+│   │   └── upload.php           # File upload settings
+│   ├── helpers/         # Utility functions
+│   ├── libraries/       # Third-party integrations
+│   └── logs/            # Application logs
+│       ├── error.log          # Error logging
+│       ├── access.log         # Access logging
+│       └── audit.log          # Security audit
+│
+├── 🌐 Public Interface
+│   ├── admin/            # Admin interface
+│   ├── teacher/          # Teacher portal
+│   ├── student/          # Student portal
+│   ├── cashier/          # Cashier interface
+│   ├── parent/           # Parent portal
+│   └── public/           # Public website
+│
+├── 📱 Assets & Resources
+│   ├── uploads/           # User uploads
+│   ├── css/               # Stylesheets
+│   ├── js/                # JavaScript files
+│   ├── images/            # Static images
+│   ├── fonts/             # Web fonts
+│   └── plugins/           # Third-party plugins
 │
 ├── 🗄️ Database & Migration Files
 │   └── database/
@@ -535,29 +536,6 @@ school-management/
 │   │   └── docs/               # API documentation
 │   ├── webhook/                # Webhook handlers
 │   └── sync/                   # Data synchronization
-│
-├── 📱 Frontend Assets & Resources
-│   ├── assets/
-│   │   ├── css/               # Compiled stylesheets
-│   │   │   ├── bootstrap/     # Bootstrap components
-│   │   │   ├── tailwind/      # Tailwind CSS
-│   │   │   ├── custom/        # Custom styles
-│   │   │   └── plugins/       # Plugin styles
-│   │   ├── js/                # JavaScript files
-│   │   │   ├── jquery/        # jQuery library
-│   │   │   ├── bootstrap/     # Bootstrap JS
-│   │   │   ├── custom/        # Custom scripts
-│   │   │   ├── plugins/       # Third-party plugins
-│   │   │   └── modules/       # ES6 modules
-│   │   ├── images/            # Static images
-│   │   │   ├── logos/         # School logos
-│   │   │   ├── icons/         # Application icons
-│   │   │   ├── backgrounds/   # Background images
-│   │   │   └── gallery/       # User gallery
-│   │   └── fonts/             # Custom fonts
-│   ├── templates/             # Email templates
-│   ├── reports/               # Report templates
-│   └── exports/               # Export templates
 │
 ├── 🔍 Documentation & Testing
 │   ├── docs/
@@ -586,18 +564,18 @@ school-management/
 | [`.htaccess`](.htaccess) | Apache configuration and security | Configuration |
 | [`composer.json`](composer.json) | PHP dependency management | Package |
 
-#### Backend Architecture Files
+#### Application Core Files
 | Component | Primary Files | Responsibility |
 |-----------|---------------|----------------|
-| **Controllers** | [`AdminController.php`](backend/app/controllers/AdminController.php), [`TeacherController.php`](backend/app/controllers/TeacherController.php), [`StudentController.php`](backend/app/controllers/StudentController.php), [`CashierController.php`](backend/app/controllers/CashierController.php), [`AuthController.php`](backend/app/controllers/AuthController.php), [`ApiController.php`](backend/app/controllers/ApiController.php) | Request handling and business logic |
-| **Models** | [`User.php`](backend/app/models/User.php), [`Student.php`](backend/app/models/Student.php), [`Teacher.php`](backend/app/models/Teacher.php), [`Fee.php`](backend/app/models/Fee.php), [`Exam.php`](backend/app/models/Exam.php), [`Attendance.php`](backend/app/models/Attendance.php) | Data operations and database interaction |
-| **Views** | [`admin/dashboard`](backend/app/views/admin/dashboard/), [`admin/students`](backend/app/views/admin/students/), [`admin/teachers`](backend/app/views/admin/teachers/), [`admin/classes`](backend/app/views/admin/classes/), [`admin/attendance`](backend/app/views/admin/attendance/), [`admin/exams`](backend/app/views/admin/exams/), [`admin/fees`](backend/app/views/admin/fees/), [`admin/events`](backend/app/views/admin/events/), [`admin/gallery`](backend/app/views/admin/gallery/), [`admin/reports`](backend/app/views/admin/reports/), [`admin/settings`](backend/app/views/admin/settings/), [`teacher/dashboard`](backend/app/views/teacher/dashboard/), [`teacher/attendance`](backend/app/views/teacher/attendance/), [`teacher/classes`](backend/app/views/teacher/classes/), [`teacher/exams`](backend/app/views/teacher/exams/), [`teacher/profile`](backend/app/views/teacher/profile/), [`student/dashboard`](backend/app/views/student/dashboard/), [`student/attendance`](backend/app/views/student/attendance/), [`student/results`](backend/app/views/student/results/), [`student/fees`](backend/app/views/student/fees/), [`student/profile`](backend/app/views/student/profile/), [`cashier/dashboard`](backend/app/views/cashier/dashboard/), [`cashier/fees`](backend/app/views/cashier/fees/), [`cashier/outstanding`](backend/app/views/cashier/outstanding/), [`cashier/reports`](backend/app/views/cashier/reports/), [`cashier/expenses`](backend/app/views/cashier/expenses/), [`parent/dashboard`](backend/app/views/parent/dashboard/), [`parent/children`](backend/app/views/parent/children/), [`parent/attendance`](backend/app/views/parent/attendance/), [`parent/results`](backend/app/views/parent/results/), [`parent/fees`](backend/app/views/parent/fees/), [`parent/events`](backend/app/views/parent/events/), [`parent/profile`](backend/app/views/parent/profile/), [`public/homepage`](backend/app/views/public/homepage/) | Presentation and user interface |
-| **Core** | [`Database.php`](backend/app/core/Database.php), [`Router.php`](backend/app/core/Router.php), [`Security.php`](backend/app/core/Security.php), [`Session.php`](backend/app/core/Session.php), [`Validator.php`](backend/app/core/Validator.php) | Framework foundation |
-| **Config** | [`database.php`](backend/config/database.php), [`app.php`](backend/config/app.php), [`security.php`](backend/config/security.php), [`email.php`](backend/config/email.php), [`upload.php`](backend/config/upload.php) | System configuration |
-| **Middleware** | [`Auth.php`](backend/app/middleware/Auth.php), [`Security.php`](backend/app/middleware/Security.php), [`RoleCheck.php`](backend/app/middleware/RoleCheck.php) | Request processing and security |
-| **Helpers** | [`functions.php`](backend/helpers/functions.php), [`utilities.php`](backend/helpers/utilities.php), [`form_helpers.php`](backend/helpers/form_helpers.php) | Utility functions |
-| **Libraries** | [`TCPDF.php`](backend/libraries/TCPDF.php), [`PHPMailer.php`](backend/libraries/PHPMailer.php), [`ChartJS.php`](backend/libraries/ChartJS.php) | Third-party integrations |
-| **Logs** | [`error.log`](backend/logs/error.log), [`access.log`](backend/logs/access.log), [`audit.log`](backend/logs/audit.log) | Application logs |
+| **Controllers** | [`AdminController.php`](controllers/AdminController.php), [`TeacherController.php`](controllers/TeacherController.php), [`StudentController.php`](controllers/StudentController.php), [`CashierController.php`](controllers/CashierController.php), [`AuthController.php`](controllers/AuthController.php), [`ApiController.php`](controllers/ApiController.php) | Request handling and business logic |
+| **Models** | [`User.php`](models/User.php), [`Student.php`](models/Student.php), [`Teacher.php`](models/Teacher.php), [`Fee.php`](models/Fee.php), [`Exam.php`](models/Exam.php), [`Attendance.php`](models/Attendance.php) | Data operations and database interaction |
+| **Views** | [`admin/dashboard`](admin/dashboard/), [`admin/students`](admin/students/), [`admin/teachers`](admin/teachers/), [`admin/classes`](admin/classes/), [`admin/attendance`](admin/attendance/), [`admin/exams`](admin/exams/), [`admin/fees`](admin/fees/), [`admin/events`](admin/events/), [`admin/gallery`](admin/gallery/), [`admin/reports`](admin/reports/), [`admin/settings`](admin/settings/), [`teacher/dashboard`](teacher/dashboard/), [`teacher/attendance`](teacher/attendance/), [`teacher/classes`](teacher/classes/), [`teacher/exams`](teacher/exams/), [`teacher/profile`](teacher/profile/), [`student/dashboard`](student/dashboard/), [`student/attendance`](student/attendance/), [`student/results`](student/results/), [`student/fees`](student/fees/), [`student/profile`](student/profile/), [`cashier/dashboard`](cashier/dashboard/), [`cashier/fees`](cashier/fees/), [`cashier/outstanding`](cashier/outstanding/), [`cashier/reports`](cashier/reports/), [`cashier/expenses`](cashier/expenses/), [`parent/dashboard`](parent/dashboard/), [`parent/children`](parent/children/), [`parent/attendance`](parent/attendance/), [`parent/results`](parent/results/), [`parent/fees`](parent/fees/), [`parent/events`](parent/events/), [`parent/profile`](parent/profile/), [`public/homepage`](public/homepage/) | Presentation and user interface |
+| **Core** | [`Database.php`](core/Database.php), [`Router.php`](core/Router.php), [`Security.php`](core/Security.php), [`Session.php`](core/Session.php), [`Validator.php`](core/Validator.php) | Framework foundation |
+| **Config** | [`database.php`](config/database.php), [`app.php`](config/app.php), [`security.php`](config/security.php), [`email.php`](config/email.php), [`upload.php`](config/upload.php) | System configuration |
+| **Middleware** | [`Auth.php`](middleware/Auth.php), [`Security.php`](middleware/Security.php), [`RoleCheck.php`](middleware/RoleCheck.php) | Request processing and security |
+| **Helpers** | [`functions.php`](helpers/functions.php), [`utilities.php`](helpers/utilities.php), [`form_helpers.php`](helpers/form_helpers.php) | Utility functions |
+| **Libraries** | [`TCPDF.php`](libraries/TCPDF.php), [`PHPMailer.php`](libraries/PHPMailer.php), [`ChartJS.php`](libraries/ChartJS.php) | Third-party integrations |
+| **Logs** | [`error.log`](logs/error.log), [`access.log`](logs/access.log), [`audit.log`](logs/audit.log) | Application logs |
 
 #### Database Management Files
 | File Type | File Name | Purpose |
@@ -618,23 +596,17 @@ school-management/
 | [`api/v1/exams/`](api/v1/exams/) | Examination API | Results, schedules |
 | [`api/v1/reports/`](api/v1/reports/) | Reporting API | Analytics, exports |
 
-#### Frontend Assets & Resources Files
+#### Assets & Resources Files
 | Directory | Purpose | Key Files |
 |-----------|---------|-----------|
-| [`assets/css/bootstrap/`](assets/css/bootstrap/) | Bootstrap framework styles | [`bootstrap.min.css`](assets/css/bootstrap/bootstrap.min.css), [`bootstrap-grid.css`](assets/css/bootstrap/bootstrap-grid.css) |
-| [`assets/css/tailwind/`](assets/css/tailwind/) | Tailwind CSS utilities | [`tailwind.min.css`](assets/css/tailwind/tailwind.min.css), [`tailwind.config.js`](assets/css/tailwind/tailwind.config.js) |
-| [`assets/css/custom/`](assets/css/custom/) | Custom application styles | [`main.css`](assets/css/custom/main.css), [`responsive.css`](assets/css/custom/responsive.css), [`admin.css`](assets/css/custom/admin.css) |
-| [`assets/css/plugins/`](assets/css/plugins/) | Third-party plugin styles | [`datatables.css`](assets/css/plugins/datatables.css), [`chartjs.css`](assets/css/plugins/chartjs.css) |
-| [`assets/js/jquery/`](assets/js/jquery/) | jQuery library | [`jquery.min.js`](assets/js/jquery/jquery.min.js), [`jquery-ui.min.js`](assets/js/jquery/jquery-ui.min.js) |
-| [`assets/js/bootstrap/`](assets/js/bootstrap/) | Bootstrap JavaScript | [`bootstrap.bundle.min.js`](assets/js/bootstrap/bootstrap.bundle.min.js) |
-| [`assets/js/custom/`](assets/js/custom/) | Custom application scripts | [`app.js`](assets/js/custom/app.js), [`dashboard.js`](assets/js/custom/dashboard.js), [`forms.js`](assets/js/custom/forms.js) |
-| [`assets/js/plugins/`](assets/js/plugins/) | Third-party plugins | [`datatables.min.js`](assets/js/plugins/datatables.min.js), [`chartjs.min.js`](assets/js/plugins/chartjs.min.js) |
-| [`assets/js/modules/`](assets/js/modules/) | ES6 modules | [`auth.js`](assets/js/modules/auth.js), [`api.js`](assets/js/modules/api.js), [`validation.js`](assets/js/modules/validation.js) |
-| [`assets/images/logos/`](assets/images/logos/) | School logos | [`school-logo.png`](assets/images/logos/school-logo.png), [`school-logo-small.png`](assets/images/logos/school-logo-small.png) |
-| [`assets/images/icons/`](assets/images/icons/) | Application icons | [`user-icon.png`](assets/images/icons/user-icon.png), [`dashboard-icon.png`](assets/images/icons/dashboard-icon.png) |
-| [`assets/images/backgrounds/`](assets/images/backgrounds/) | Background images | [`login-bg.jpg`](assets/images/backgrounds/login-bg.jpg), [`dashboard-bg.jpg`](assets/images/backgrounds/dashboard-bg.jpg) |
-| [`assets/images/gallery/`](assets/images/gallery/) | User gallery images | Dynamic user uploads |
-| [`assets/fonts/`](assets/fonts/) | Custom web fonts | [`font-awesome.woff2`](assets/fonts/font-awesome.woff2), [`custom-font.ttf`](assets/fonts/custom-font.ttf) |
+| [`css/`](css/) | Bootstrap framework styles | [`bootstrap.min.css`](css/bootstrap.min.css), [`bootstrap-grid.css`](css/bootstrap-grid.css) |
+| [`js/`](js/) | Bootstrap JavaScript | [`bootstrap.bundle.min.js`](js/bootstrap.bundle.min.js) |
+| [`images/logos/`](images/logos/) | School logos | [`school-logo.png`](images/logos/school-logo.png), [`school-logo-small.png`](images/logos/school-logo-small.png) |
+| [`images/icons/`](images/icons/) | Application icons | [`user-icon.png`](images/icons/user-icon.png), [`dashboard-icon.png`](images/icons/dashboard-icon.png) |
+| [`images/backgrounds/`](images/backgrounds/) | Background images | [`login-bg.jpg`](images/backgrounds/login-bg.jpg), [`dashboard-bg.jpg`](images/backgrounds/dashboard-bg.jpg) |
+| [`images/gallery/`](images/gallery/) | User gallery images | Dynamic user uploads |
+| [`fonts/`](fonts/) | Custom web fonts | [`font-awesome.woff2`](fonts/font-awesome.woff2), [`custom-font.ttf`](fonts/custom-font.ttf) |
+| [`uploads/`](uploads/) | User uploads | Dynamic user files |
 | [`templates/`](templates/) | Email and report templates | [`email-template.html`](templates/email-template.html), [`report-template.html`](templates/report-template.html) |
 | [`reports/`](reports/) | Report templates | [`student-report.pdf`](reports/student-report.pdf), [`fee-report.pdf`](reports/fee-report.pdf) |
 | [`exports/`](exports/) | Export templates | [`excel-template.xlsx`](exports/excel-template.xlsx), [`csv-template.csv`](exports/csv-template.csv) |
@@ -655,11 +627,11 @@ school-management/
 ### Frontend Functions & Features
 
 #### Core JavaScript Functions
-- **Authentication Functions**: [`loginUser()`](assets/js/modules/auth.js:loginUser), [`logoutUser()`](assets/js/modules/auth.js:logoutUser), [`validateSession()`](assets/js/modules/auth.js:validateSession)
-- **API Communication**: [`apiRequest()`](assets/js/modules/api.js:apiRequest), [`fetchData()`](assets/js/modules/api.js:fetchData), [`submitForm()`](assets/js/modules/api.js:submitForm)
-- **Form Validation**: [`validateForm()`](assets/js/modules/validation.js:validateForm), [`checkRequiredFields()`](assets/js/modules/validation.js:checkRequiredFields), [`showValidationErrors()`](assets/js/modules/validation.js:showValidationErrors)
-- **UI Interactions**: [`toggleSidebar()`](assets/js/custom/app.js:toggleSidebar), [`showModal()`](assets/js/custom/app.js:showModal), [`updateTable()`](assets/js/custom/app.js:updateTable)
-- **Data Visualization**: [`renderChart()`](assets/js/custom/dashboard.js:renderChart), [`updateDashboardStats()`](assets/js/custom/dashboard.js:updateDashboardStats)
+- **Authentication Functions**: [`loginUser()`](js/modules/auth.js:loginUser), [`logoutUser()`](js/modules/auth.js:logoutUser), [`validateSession()`](js/modules/auth.js:validateSession)
+- **API Communication**: [`apiRequest()`](js/modules/api.js:apiRequest), [`fetchData()`](js/modules/api.js:fetchData), [`submitForm()`](js/modules/api.js:submitForm)
+- **Form Validation**: [`validateForm()`](js/modules/validation.js:validateForm), [`checkRequiredFields()`](js/modules/validation.js:checkRequiredFields), [`showValidationErrors()`](js/modules/validation.js:showValidationErrors)
+- **UI Interactions**: [`toggleSidebar()`](js/custom/app.js:toggleSidebar), [`showModal()`](js/custom/app.js:showModal), [`updateTable()`](js/custom/app.js:updateTable)
+- **Data Visualization**: [`renderChart()`](js/custom/dashboard.js:renderChart), [`updateDashboardStats()`](js/custom/dashboard.js:updateDashboardStats)
 
 #### Dashboard Functions
 - **Admin Dashboard**: Real-time statistics, user activity charts, system health monitoring
@@ -804,7 +776,7 @@ school-management/
 #### Database Connection Issues
 - **Problem**: Cannot connect to database
 - **Solutions**:
-  - Verify database credentials in [`config/database.php`](backend/config/database.php)
+  - Verify database credentials in [`config/database.php`](config/database.php)
   - Ensure MySQL service is running
   - Check database user permissions and privileges
   - Confirm database server is accessible
@@ -812,7 +784,7 @@ school-management/
 #### File Upload Problems
 - **Problem**: File upload not working
 - **Solutions**:
-  - Check file permissions on `backend/public/uploads/` directory (should be 755)
+  - Check file permissions on `uploads/` directory (should be 755)
   - Verify `MAX_FILE_SIZE` setting in php.ini
   - Check PHP upload limits (`upload_max_filesize`, `post_max_size`)
   - Ensure upload directory is writable by web server user
@@ -841,14 +813,14 @@ school-management/
   - Ensure proper session cleanup configuration
 
 ### Debug Configuration
-Enable debug mode in [`config/app.php`](backend/config/app.php):
+Enable debug mode in [`config/app.php`](config/app.php):
 ```php
 'debug' => true,
 'log_level' => 'debug',
 ```
 
 ### Log Files & Monitoring
-- **Application Logs**: Check `backend/logs/application.log` for detailed error information
+- **Application Logs**: Check `logs/application.log` for detailed error information
 - **Error Logs**: Monitor server error logs for PHP and Apache/Nginx errors
 - **Database Logs**: Check MySQL error logs for database-related issues
 - **Access Logs**: Monitor access logs for security and performance analysis
